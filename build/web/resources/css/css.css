@@ -1,0 +1,17 @@
+th, td {
+    padding: 15px;
+}
+form{
+    color: black;
+    font-family:cursive;
+    align-content: center;
+}
+h3{
+    color:red;
+    font-size: xx-large;
+    font-family: fantasy;
+    
+}
+.top_form table {
+    border: none;
+}

@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Hi page</title>
+        <h:outputStylesheet library="css" name="css.css"/>
+    </h:head>
+
+    <h:body>
+        <h:form class="top_form">
+            <h:graphicImage value="resources/img/gift-3030279_1280.jpg"/>
+            
+         
+            <h3>
+                Please enter your information
+            </h3>
+
+             <h:panelGrid id="panel" columns="2" >
+            
+            <h:outputLabel for="personalNumber" value="Personal Number: "/>
+            <h:inputText id="personalNumber" value="#{controllerHiJSFManagedBean.personalNumber}" required="true" >
+                <f:validateLength minimum="10" maximum="12"/>
+            </h:inputText>
+            <h:outputLabel for="name" value="Name: "/>
+            <h:inputText id="name" value="#{controllerHiJSFManagedBean.name}" required="true"/>
+            
+            <h:outputLabel for="family" value="Family Name: "/>
+            <h:inputText id="family" value="#{controllerHiJSFManagedBean.familyName}" required="true"/>
+          
+            <h:outputLabel value="Size: "/>
+            <h:selectOneMenu id="size" value="#{controllerHiJSFManagedBean.size}" required="true">
+
+                <f:selectItem itemLabel="size" itemValue="L" />
+                <f:selectItem itemLabel="L" itemValue="L" />
+                <f:selectItem itemLabel="XL" itemValue="XL"/>
+                <f:selectItem itemLabel="XXl" itemValue="XXl"/>
+            </h:selectOneMenu>
+            </h:panelGrid>
+            <h:outputLabel value="Registration: "/>
+            <h:commandButton value="Submit" action="#{controllerHiJSFManagedBean.submit()}"/>
+         
+             
+        </h:form>
+        <br></br>
+        <h:form>
+            <h3>
+                Delete a member :
+            </h3>
+             <h:panelGrid columns="2">
+            <h:outputLabel value="ID: "/>
+            <h:inputText value="#{controllerHiJSFManagedBean.personalNumber}"/>
+            </h:panelGrid>
+            <h:outputLabel value="Delete :"/>
+            <h:commandButton value="Delete" action="#{controllerHiJSFManagedBean.delete()}"/>
+             
+            <br></br>
+
+        </h:form>
+        <h:form>
+             <h3>
+                Update information :
+            </h3>
+            <h:panelGrid columns="2">
+            <h:outputLabel value="UPDATE BY ID : "/>
+           
+            <h:inputText value="#{controllerHiJSFManagedBean.personalNumber}"/>
+
+            <h:outputLabel value="New Name: "/>
+            <h:inputText value="#{controllerHiJSFManagedBean.name}"/>
+            
+            <h:outputLabel value="New Family Name: "/>
+            <h:inputText value="#{controllerHiJSFManagedBean.familyName}"/>
+
+            <h:outputLabel value="New size: "/>
+            <h:inputText value="#{controllerHiJSFManagedBean.size}"/>
+           </h:panelGrid>
+            <h:outputLabel value="Update : "/>
+            <h:commandButton value="Update" action="#{controllerHiJSFManagedBean.updateNew()}"/>
+              
+             <br></br>
+        </h:form>
+        <table id="myTable" align="center" >
+            <h3>
+                Registration list :
+            </h3>
+            <tr>
+                <th>ID   </th><th>First Name   </th>    <th>Last Name   </th><th>Personal Number   </th> <th>Size   </th>  
+            </tr>
+            <ui:repeat value="#{controllerHiJSFManagedBean.allMembers()}" var="member"> 
+                <tr>
+                    <td>#{member.id}</td>
+                    <td>#{member.name}</td>
+                    <td>#{member.famillyName}</td>
+                    <td>#{member.personalNumber}</td>
+                    <td>#{member.size}</td>
+
+                </tr>
+            </ui:repeat>   
+
+<!--<br> </br>
+        <h:outputLabel value="Personal Number "/>
+            <h:inputText value="#{controllerHiJSFManagedBean.personalNumber}"/>
+            <br> </br>-->
+        </table>
+
+        
+
+    </h:body>
+</html>
+
